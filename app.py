@@ -33,3 +33,8 @@ def index():
 @app.route('/toys/new')
 def new():
   return render_template("new.html")
+
+@app.route('/toys/<int:id>')
+def show(id):
+  found_toy = next((t for t in toys if t.id == id), None)
+  return render_template("show.html", toy=found_toy)
