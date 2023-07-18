@@ -38,3 +38,8 @@ def new():
 def show(id):
   found_toy = next((t for t in toys if t.id == id), None)
   return render_template("show.html", toy=found_toy)
+
+@app.route('/toys/<int:id>/edit')
+def edit(id):
+  found_toy = next((t for t in toys if t.id == id), None)
+  return render_template("edit.html", toy=found_toy)
