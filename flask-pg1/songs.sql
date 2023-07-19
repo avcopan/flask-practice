@@ -1,0 +1,6 @@
+CREATE TABLE songs (
+  id SERIAL PRIMARY KEY,
+  artist TEXT NOT NULL,
+  title TEXT NOT NULL,
+  rating INTEGER NOT NULL
+);
