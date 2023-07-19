@@ -7,9 +7,11 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import url_for
+from flask_modus import Modus  # required for form to take PATCH requests
 from toy import Toy
 
 app = Flask(__name__)
+modus = Modus(app)  # required for form to take PATCH requests
 
 duplo = Toy(name='duplo')
 lego = Toy(name='lego')
@@ -34,7 +36,7 @@ def index():
 def new():
   return render_template("new.html")
 
-@app.route('/toys/<int:id>')
+@app.route('/toys/<int:id>', methods=["GET", "PATCH"])
 def show(id):
   found_toy = next((t for t in toys if t.id == id), None)
   return render_template("show.html", toy=found_toy)
